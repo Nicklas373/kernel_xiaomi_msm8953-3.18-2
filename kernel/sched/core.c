@@ -5794,6 +5794,7 @@ DEFINE_PER_CPU(struct sched_domain *, sd_numa);
 DEFINE_PER_CPU(struct sched_domain *, sd_busy);
 DEFINE_PER_CPU(struct sched_domain *, sd_asym);
 DEFINE_PER_CPU(struct sched_domain *, sd_ea);
+DEFINE_PER_CPU(struct sched_domain *, sd_scs);
 
 static void update_top_cache_domain(int cpu)
 {
@@ -5827,6 +5828,9 @@ static void update_top_cache_domain(int cpu)
 			break;
 	}
 	rcu_assign_pointer(per_cpu(sd_ea, cpu), ea_sd);
+
+	sd = highest_flag_domain(cpu, SD_SHARE_CAP_STATES);
+	rcu_assign_pointer(per_cpu(sd_scs, cpu), sd);
 }
 
 /*
