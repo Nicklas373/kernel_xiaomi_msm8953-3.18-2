@@ -167,7 +167,7 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 
 	struct cpuidle_state *target_state = &drv->states[index];
 	bool broadcast = !!(target_state->flags & CPUIDLE_FLAG_TIMER_STOP);
-	ktime_t time_start, time_end;
+	u64 time_start, time_end;
 	s64 diff;
 
 	/*
@@ -182,13 +182,13 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
         sched_idle_set_state(target_state, index);
 
 	trace_cpu_idle_rcuidle(index, dev->cpu);
-	time_start = ktime_get();
+	time_start = local_clock();
 
 	cpuidle_set_idle_cpu(dev->cpu);
 	entered_state = target_state->enter(dev, drv, index);
 	cpuidle_clear_idle_cpu(dev->cpu);
 
-	time_end = ktime_get();
+	time_end = local_clock();
 	trace_cpu_idle_rcuidle(PWR_EVENT_EXIT, dev->cpu);
 
 	if (broadcast) {
@@ -209,8 +209,11 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 		 * Update cpuidle counters
 		 * This can be moved to within driver enter routine,
 		 * but that results in multiple copies of same code.
-		 */
-		diff = ktime_to_us(ktime_sub(time_end, time_start));
+		 *
+		 * local_clock() returns the time in nanosecond, let's shift
+	 	 * by 10 (divide by 1024) to have microsecond based time.
+	 	 */
+		diff = (time_end - time_start) >> 10;
 		if (diff > INT_MAX)
 			diff = INT_MAX;
 
