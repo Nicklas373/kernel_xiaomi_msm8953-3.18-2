@@ -57,7 +57,9 @@
 #define HOST_ADDR_LSB(addr)		(addr & 0xFFFFFFFF)
 #define HOST_ADDR_MSB(addr)		((addr >> 32) & 0xFFFFFFFF)
 
+#ifdef CONFIG_IPC_LOGGING
 #define MHI_IPC_LOG_PAGES		(100)
+#endif
 #define MHI_REGLEN			0x100
 #define MHI_INIT			0
 #define MHI_REINIT			1
@@ -67,7 +69,9 @@
 
 enum mhi_msg_level mhi_msg_lvl = MHI_MSG_ERROR;
 enum mhi_msg_level mhi_ipc_msg_lvl = MHI_MSG_VERBOSE;
+#ifdef CONFIG_IPC_LOGGING
 void *mhi_ipc_log;
+#endif
 
 static struct mhi_dev *mhi_ctx;
 static void mhi_hwc_cb(void *priv, enum ipa_mhi_event_type event,
@@ -3075,12 +3079,15 @@ static int mhi_dev_probe(struct platform_device *pdev)
 			pr_err("Error reading MHI Dev DT\n");
 			return rc;
 		}
+
+#ifdef CONFIG_IPC_LOGGING
 		mhi_ipc_log = ipc_log_context_create(MHI_IPC_LOG_PAGES,
 								"mhi", 0);
 		if (mhi_ipc_log == NULL) {
 			dev_err(&pdev->dev,
 				"Failed to create IPC logging context\n");
 		}
+#endif
 		/*
 		 * The below list and mutex should be initialized
 		 * before calling mhi_uci_init to avoid crash in
