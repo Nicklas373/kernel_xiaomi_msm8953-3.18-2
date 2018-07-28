@@ -344,7 +344,7 @@ module_param_named(
 #if (defined CONFIG_MACH_XIAOMI_MIDO) || (defined CONFIG_MACH_XIAOMI_TISSOT)
 static int fg_sram_update_period_ms = 3000;
 #else
-static int fg_sram_update_period_ms = 30000;
+static int fg_sram_update_period_ms = 5000;
 #endif
 module_param_named(
 	sram_update_period_ms, fg_sram_update_period_ms, int, S_IRUSR | S_IWUSR
