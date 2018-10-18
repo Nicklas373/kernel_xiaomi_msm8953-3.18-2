@@ -1824,7 +1824,7 @@ static int mdss_dsi_disp_wake_thread(void *data)
 	while (1) {
 		bool should_stop;
 
-		wait_event(ctrl_pdata->wake_waitq,
+		wait_event_interruptible(ctrl_pdata->wake_waitq,
 			(should_stop = kthread_should_stop()) ||
 			atomic_cmpxchg(&ctrl_pdata->disp_en,
 				       MDSS_DISPLAY_WAKING,
