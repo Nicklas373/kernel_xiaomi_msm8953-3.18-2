@@ -33,8 +33,7 @@ mem_init(void)
 
 /* free the pages occupied by initialization code */
 
-void 
-free_initmem(void)
+void free_initmem(void)
 {
 	free_initmem_default(-1);
 }
