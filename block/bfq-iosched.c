@@ -2206,12 +2206,6 @@ static int bfq_allow_bio_merge(struct request_queue *q, struct request *rq,
 	return bfqq == RQ_BFQQ(rq);
 }
 
-static int bfq_allow_rq_merge(struct request_queue *q, struct request *rq,
-			      struct request *next)
-{
-	return RQ_BFQQ(rq) == RQ_BFQQ(next);
-}
-
 /*
  * Set the maximum time for the in-service queue to consume its
  * budget. This prevents seeky processes from lowering the throughput.
@@ -5286,7 +5280,6 @@ static struct elevator_type iosched_bfq = {
 		.elevator_bio_merged_fn =	bfq_bio_merged,
 #endif
 		.elevator_allow_bio_merge_fn =	bfq_allow_bio_merge,
-		.elevator_allow_rq_merge_fn =	bfq_allow_rq_merge,
 		.elevator_dispatch_fn =		bfq_dispatch_requests,
 		.elevator_add_req_fn =		bfq_insert_request,
 		.elevator_activate_req_fn =	bfq_activate_request,
