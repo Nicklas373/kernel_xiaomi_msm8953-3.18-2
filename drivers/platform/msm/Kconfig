@@ -156,6 +156,13 @@ config IPA3
 	  Kernel and user-space processes can call the IPA driver
 	  to configure IPA core.
 
+config IPA_WAKELOCK
+	bool "IPA wakelock support"
+	depends on IPA
+	default n
+	help
+	  Ability to choose if you want to compile IPA wakelocks or not.
+
 config GSI
 	bool "GSI support"
 	help
