@@ -75,8 +75,6 @@
 #include <linux/uprobes.h>
 #include <linux/aio.h>
 #include <linux/compiler.h>
-#include <linux/sysctl.h>
-#include <linux/kcov.h>
 #include <linux/cpufreq.h>
 #include <linux/simple_lmk.h>
 
