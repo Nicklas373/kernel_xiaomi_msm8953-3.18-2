@@ -76,6 +76,7 @@
 #include <linux/aio.h>
 #include <linux/compiler.h>
 #include <linux/cpufreq.h>
+#include <linux/cpu_boost.h>
 #include <linux/simple_lmk.h>
 
 #include <asm/pgtable.h>
