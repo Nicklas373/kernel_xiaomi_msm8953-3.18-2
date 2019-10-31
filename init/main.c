@@ -655,13 +655,13 @@ asmlinkage __visible void __init start_kernel(void)
 #endif
 	thread_info_cache_init();
 	cred_init();
-	fork_init(totalram_pages);
+	fork_init(totalram_pages());
 	proc_caches_init();
 	buffer_init();
 	key_init();
 	security_init();
 	dbg_late_init();
-	vfs_caches_init(totalram_pages);
+	vfs_caches_init(totalram_pages());
 	signals_init();
 	/* rootfs populating might need page-writeback */
 	page_writeback_init();
