@@ -66,11 +66,11 @@ void __init mem_init(void)
 
 	/* this will put all low memory onto the freelists */
 	free_all_bootmem();
-	max_low_pfn = totalram_pages();
+	max_low_pfn = totalram_pages;
 #ifdef CONFIG_HIGHMEM
 	setup_highmem(end_iomem, highmem);
 #endif
-	max_pfn = totalram_pages();
+	max_pfn = totalram_pages;
 	mem_init_print_info(NULL);
 	kmalloc_ok = 1;
 }

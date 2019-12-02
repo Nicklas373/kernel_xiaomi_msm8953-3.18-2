@@ -206,7 +206,7 @@ static enum oom_constraint constrained_alloc(struct zonelist *zonelist,
 	int nid;
 
 	/* Default to all available memory */
-	*totalpages = totalram_pages() + total_swap_pages;
+	*totalpages = totalram_pages + total_swap_pages;
 
 	if (!zonelist)
 		return CONSTRAINT_NONE;
