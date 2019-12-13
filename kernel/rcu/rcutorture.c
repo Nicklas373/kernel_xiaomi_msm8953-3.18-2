@@ -1757,6 +1757,7 @@ rcu_torture_init(void)
 		for (i = 0; i < ARRAY_SIZE(torture_ops); i++)
 			pr_alert(" %s", torture_ops[i]->name);
 		pr_alert("\n");
+		cur_ops = NULL;
 		firsterr = -EINVAL;
 		goto unwind;
 	}
