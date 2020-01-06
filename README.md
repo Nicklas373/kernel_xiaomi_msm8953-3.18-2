@@ -42,7 +42,7 @@ dev/kasumi-uc : Current clarity kernel branch, with underclocked cpu not gpu, ho
 ## Features
 Based on Clarity Kernel r15 build 20191220
 - Based on CAF Kernel Tag 'LA.UM.8.6.r1-02900-89xx.0'
-- Up-to-date for aosp common kernel 3.18 (https://android.googlesource.com/kernel/common)
+- Up-to-date for aosp common kernel 3.18 (https://https://source.codeaurora.org/quic/la/kernel/msm-3.18)
 - Up-to-date for f2fs stable branch (https://github.com/jaegeuk/f2fs-stable)
 - Up-to-date for exfat stable branch (https://github.com/arter97/exfat-linux)
 - Compiled using Clang 10.0.0 NusantaraClang (Compat VDSO)
@@ -65,7 +65,7 @@ Based on Clarity Kernel r15 build 20191220
 - And any other improvement or feature that i forget to tell '_' (Check git for more details)
 
 ## Download build
-[![Download Clarity Kernel](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/clarity-kernel/files/Mido/r15/)
+[![Download Clarity Kernel](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/clarity-kernel/files/Mido/r16/)
 
 ## XDA Support
 [XDA-Thread](https://forum.xda-developers.com/redmi-note-4/xiaomi-redmi-note-4-snapdragon-roms-kernels-recoveries--other-development/kernel-clarity-kernel-t3992235)
