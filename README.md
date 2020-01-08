@@ -3,6 +3,10 @@
 Clarity is an EAS based kernel that have aim to get fully balanced with battery and performance usage without need any configuration to use. 
 and also, always up-to-date with CAF, AOSP/Common, F2FS & EXFAT, designed for flash & forget kernel :3.
 
+<p align="center">
+  <img width="800" height="480" src="https://raw.githubusercontent.com/Nicklas373/kernel_xiaomi_msm8953-3.18-2/readme/background.png"><br>
+</p>
+
 ## Branches Information
 ```
 master : Current source branch that used for all branch on this kernel, it's based on LA.UM.8.6.r1-01900-89xx.0
