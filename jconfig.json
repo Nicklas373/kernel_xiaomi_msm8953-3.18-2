@@ -1,0 +1,13 @@
+{
+  "kernel": {
+    "name": "Clarity Kernel | Xiaomi Redmi Note 4x",
+    "version": "r16",
+    "link": "https://sourceforge.net/projects/clarity-kernel/files/Mido/r16/Clarity-Kernel-Mido-r16-EAS-P-20200106-2149.zip/download",
+    "changelog_url": "https://forum.xda-developers.com/showpost.php?p\u003d80688015\u0026postcount\u003d2",
+    "date": "2020-01-06",
+    "sha1": "2b61f9773dc67fa9e866e6544bd1287998e44b3e"
+  },
+  "support": {
+    "link": "https://forum.xda-developers.com/redmi-note-4/xiaomi-redmi-note-4-snapdragon-roms-kernels-recoveries--other-development/kernel-clarity-kernel-t3992235"
+  }
+}
