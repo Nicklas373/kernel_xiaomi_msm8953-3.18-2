@@ -1,16 +1,16 @@
 r16 - 01-06-2020 (GMT+7)
 
-Merge latest aosp/android-3.18 branch as per 20200105
-Fix other old upstream issue for missing changes on aosp-3.18 (Thanks to @krasCGQ)
-Apply ion/iommu optimizations from @Kerneltoast (Thanks to @ramadhanr124 & @Zile995)
-MSM Thermal optimizations
-Memcmp optimizations
-Improve CPUSets Assist
-Implement crypto NEON XOR accelerated + CRC32 performance
-Disable other left debugfs drivers
-Disable auditing on selinux
-Disable backlight dimmer by default
-Disable several audio tweaks features by default
-Disable sched_boost tune on kernel features
-Removed Boeffla Wakelock Blocker
-Other misc optimizations
+- Merge latest aosp/android-3.18 branch as per 20200105
+- Fix other old upstream issue for missing changes on aosp-3.18 (Thanks to @krasCGQ)
+- Apply ion/iommu optimizations from @Kerneltoast (Thanks to @ramadhanr124 & @Zile995)
+- MSM Thermal optimizations
+- Memcmp optimizations
+- Improve CPUSets Assist
+- Implement crypto NEON XOR accelerated + CRC32 performance
+- Disable other left debugfs drivers
+- Disable auditing on selinux
+- Disable backlight dimmer by default
+- Disable several audio tweaks features by default
+- Disable sched_boost tune on kernel features
+- Removed Boeffla Wakelock Blocker
+- Other misc optimizations
