@@ -1,0 +1,20 @@
+r13 - 01-13-2020 (GMT+7)
+
+- Upstreamed to v4.4.209
+- Updated WiFi tags to 'LA.UM.7.2.c6-03700-sdm660.0'
+- Switch to Proton Clang 10.0.0 (prebuilt-20200104)
+- Disable LLVM Polly optimizations 
+- Apply several scheduler & schedutil optimizations for EAS
+- Fix Backport of Energy Model Management Framework
+- Fix cpufreq stats leaks (thanks to @alanndz, for references. Based on celtare21)
+- Merge ion/iommu & Merge latest other optimization from @kerneltoast
+- Backport Deduce Wakeup Reasons function to manage several wakeup issue on kernel
+- Optimize CPUSets for Big.LITTLE device (missmatched on older build -_-)
+- Remove POPP GPU power control level
+- Implement crypto NEON XOR accelerated + CRC32 performance
+- Removed Several VLA Usage on kernel
+- Revert a lot of old gpu optimizations (cleanup)
+- Removed direct references to HZ
+- Disable other left debugfs & debugging drivers 
+- Disable sched_boost features on kernel
+- Other misc optimizations

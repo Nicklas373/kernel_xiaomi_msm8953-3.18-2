@@ -3,7 +3,7 @@
     "name": "Clarity Kernel | Mido",
     "version": "r16",
     "link": "https://sourceforge.net/projects/clarity-kernel/files/Mido/r16/Clarity-Kernel-Mido-r16-EAS-Q-20200106-2156.zip/download",
-    "changelog_url": "https://raw.githubusercontent.com/Nicklas373/kernel_xiaomi_msm8953-3.18-2/readme/fkm-ota/changelog.txt",
+    "changelog_url": "https://raw.githubusercontent.com/Nicklas373/kernel_xiaomi_msm8953-3.18-2/readme/fkm-ota/mido/changelog.txt",
     "date": "2020-01-06",
     "sha1": "e69673bc1169fa2cf60415f72a17d641e6000774"
   },
