@@ -2,10 +2,10 @@
   "kernel": {
     "name": "Clarity Kernel | Lavender",
     "version": "r13",
-    "link": "https://sourceforge.net/projects/clarity-kernel/files/Mido/r16/Clarity-Kernel-Mido-r16-EAS-P-20200106-2149.zip/download",
+    "link": "https://sourceforge.net/projects/clarity-kernel/files/Lavender/Clarity-Kernel-Lavender-r13-EAS-P-Q-20200113-2049.zip/download",
     "changelog_url": "https://raw.githubusercontent.com/Nicklas373/kernel_xiaomi_msm8953-3.18-2/readme/fkm-ota/lavender/changelog.txt",
     "date": "2020-01-13",
-    "sha1": "2b61f9773dc67fa9e866e6544bd1287998e44b3e"
+    "sha1": "23b2e74d62905459e7d96f7b4248ff270e49c0f1"
   },
   "support": {
     "link": "http://t.me/claritylave"
