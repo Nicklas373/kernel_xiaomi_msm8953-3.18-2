@@ -18,9 +18,6 @@ pie : Current stable hmp branch, this branch is stock based kernel with always u
 
 dev/kasumi : Current clarity kernel branch, with eas merged and other kernel features that already detail on xda thread
              (This is almost force push build, but not always push on xda or telegram due private build).
-
-dev/kasumi-uc : Current clarity kernel branch, with underclocked cpu not gpu, however this branch is rare to update and
-                still on testing phase.
 ```
 
 ## About device
@@ -44,12 +41,12 @@ dev/kasumi-uc : Current clarity kernel branch, with underclocked cpu not gpu, ho
 | Release Date            | January 2017                      |
 
 ## Features
-Based on Clarity Kernel r15 build 20191220
-- Based on CAF Kernel Tag 'LA.UM.8.6.r1-02900-89xx.0'
+Based on Clarity Kernel r17 build 20200128
+- Based on CAF Kernel Tag 'LA.UM.8.6.r1-03400-89xx.0'
 - Up-to-date for aosp common kernel 3.18 (https://https://source.codeaurora.org/quic/la/kernel/msm-3.18)
 - Up-to-date for f2fs stable branch (https://github.com/jaegeuk/f2fs-stable)
 - Up-to-date for exfat stable branch (https://github.com/arter97/exfat-linux)
-- Compiled using Clang 10.0.0 NusantaraClang (Compat VDSO)
+- Compiled using Clang 10.0.0 Proton Clang (Compat VDSO)
 - Merge EAS Based on (https://github.com/EAS-Project/msm-3.18)
 - Merge PELT Halflife 16ms for EAS
 - Energy Model Management Framework for legacy support
