@@ -178,7 +178,7 @@ int cpuidle_enter_state(struct cpuidle_device *dev, struct cpuidle_driver *drv,
 	cpuidle_set_idle_cpu(dev->cpu);
 	entered_state = target_state->enter(dev, drv, index);
 	cpuidle_clear_idle_cpu(dev->cpu);
-	
+
 	time_end = ktime_get();
 	trace_cpu_idle_rcuidle(PWR_EVENT_EXIT, dev->cpu);
 

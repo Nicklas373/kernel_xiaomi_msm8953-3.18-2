@@ -36,8 +36,6 @@
 #define USB_VENDOR_GENESYS_LOGIC		0x05e3
 #define HUB_QUIRK_CHECK_PORT_AUTOSUSPEND	0x01
 
-extern int deny_new_usb;
-
 /* Protect struct usb_device->state and ->children members
  * Note: Both are also protected by ->dev.sem, except that ->state can
  * change to USB_STATE_NOTATTACHED even when the semaphore isn't held. */
@@ -1184,6 +1182,7 @@ static void hub_activate(struct usb_hub *hub, enum hub_activation_type type)
 			 * PORT_OVER_CURRENT is not. So check for any of them.
 			 */
 			if (udev || (portstatus & USB_PORT_STAT_CONNECTION) ||
+			    (portchange & USB_PORT_STAT_C_CONNECTION) ||
 			    (portstatus & USB_PORT_STAT_OVERCURRENT) ||
 			    (portchange & USB_PORT_STAT_C_OVERCURRENT))
 				set_bit(port1, hub->change_bits);
@@ -4741,12 +4740,6 @@ static void hub_port_connect(struct usb_hub *hub, int port1, u16 portstatus,
 			goto done;
 		return;
 	}
-
-	if (deny_new_usb) {
-		dev_err(&port_dev->dev, "denied insert of USB device on port %d\n", port1);
-		goto done;
-	}
-
 	if (hub_is_superspeed(hub->hdev))
 		unit_load = 150;
 	else

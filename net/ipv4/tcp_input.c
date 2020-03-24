@@ -872,10 +872,10 @@ static void tcp_update_reordering(struct sock *sk, const int metric,
 /* This must be called before lost_out is incremented */
 static void tcp_verify_retransmit_hint(struct tcp_sock *tp, struct sk_buff *skb)
 {
-	if ((tp->retransmit_skb_hint == NULL) ||
-	    before(TCP_SKB_CB(skb)->seq,
-		   TCP_SKB_CB(tp->retransmit_skb_hint)->seq))
-		tp->retransmit_skb_hint = skb;
+	if (((tp->retransmit_skb_hint == NULL) && tp->retrans_out >= tp->lost_out) ||
+	    (tp->retransmit_skb_hint &&
+	     before(TCP_SKB_CB(skb)->seq,
+		    TCP_SKB_CB(tp->retransmit_skb_hint)->seq)))
 
 	if (!tp->lost_out ||
 	    after(TCP_SKB_CB(skb)->end_seq, tp->retransmit_high))
@@ -1524,8 +1524,8 @@ static struct sk_buff *tcp_shift_skb_data(struct sock *sk, struct sk_buff *skb,
 	next_pcount = tcp_skb_pcount(skb);
 	if (tcp_skb_shift(prev, skb, next_pcount, len)) {
 		pcount += next_pcount;
-		tcp_shifted_skb(sk, prev, skb, state, next_pcount,
-				 len, mss, 0);
+		tcp_shifted_skb(sk, prev, skb, state, tcp_skb_pcount(skb),
+				len, mss, 0);
 	}
 out:
 	state->fack_count += pcount;
@@ -2543,6 +2543,9 @@ static void tcp_cwnd_reduction(struct sock *sk, const int prior_unsacked,
 	int newly_acked_sacked = prior_unsacked -
 				 (tp->packets_out - tp->sacked_out);
 
+	if (newly_acked_sacked <= 0 || WARN_ON_ONCE(!tp->prior_cwnd))
+		return;
+
 	tp->prr_delivered += newly_acked_sacked;
 	if (tcp_packets_in_flight(tp) > tp->snd_ssthresh) {
 		u64 dividend = (u64)tp->snd_ssthresh * tp->prr_delivered +
@@ -3363,6 +3366,8 @@ static void tcp_send_challenge_ack(struct sock *sk)
 	u32 now = jiffies / HZ;
 	u32 count;
 
+	/* Check host-wide RFC 5961 rate limit. */
+	now = jiffies / HZ;
 	if (now != challenge_timestamp) {
 		u32 half = (sysctl_tcp_challenge_ack_limit + 1) >> 1;
 
@@ -4874,7 +4879,8 @@ static void __tcp_ack_snd_check(struct sock *sk, int ofo_possible)
 	struct tcp_sock *tp = tcp_sk(sk);
 
 	    /* More than one full frame received... */
-	if (((tp->rcv_nxt - tp->rcv_wup) > inet_csk(sk)->icsk_ack.rcv_mss &&
+	if (((tp->rcv_nxt - tp->rcv_wup) > (inet_csk(sk)->icsk_ack.rcv_mss) *
+					sysctl_tcp_delack_seg &&
 	     /* ... and right edge of window advances far enough.
 	      * (tcp_recvmsg() will send ACK otherwise). Or...
 	      */

@@ -1499,9 +1499,9 @@ struct task_struct {
 #ifdef CONFIG_SMP
 	struct llist_node wake_entry;
 	int on_cpu;
+	struct task_struct *last_wakee;
 	unsigned int wakee_flips;
 	unsigned long wakee_flip_decay_ts;
-	struct task_struct *last_wakee;
 
 	int wake_cpu;
 #endif
