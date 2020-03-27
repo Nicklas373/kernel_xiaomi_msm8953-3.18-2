@@ -1500,7 +1500,7 @@ void ufsdbg_add_debugfs(struct ufs_hba *hba)
 		goto err_no_root;
 	}
 
-	if (IS_ENABLED(CONFIG_DEVICE_MARLIN)) {
+	if (IS_ENABLED(CONFIG_MACH_XIAOMI_MIDO)) {
 		debugfs_create_file("show_hba", S_IRUSR,
 			hba->debugfs_files.debugfs_root, hba,
 			&ufsdbg_show_hba_fops);
@@ -1667,7 +1667,7 @@ err_no_root:
 
 void ufsdbg_remove_debugfs(struct ufs_hba *hba)
 {
-#if defined(CONFIG_DEVICE_MARLIN)
+#if defined(CONFIG_MACH_XIAOMI_MIDO)
 	debugfs_remove_recursive(hba->debugfs_files.debugfs_root);
 #else
 	ufshcd_vops_remove_debugfs(hba);
