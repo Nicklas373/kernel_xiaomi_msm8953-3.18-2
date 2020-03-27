@@ -1366,6 +1366,12 @@ config CPUSETS_ASSIST
 
 if CPUSETS_ASSIST
 
+config CPUSET_AUDIO
+	string "Value for 'audio-app' cpuset"
+	default "0-1"
+	help
+	  The cpu mask to use for audio application cpuset.
+
 config CPUSET_BG
 	string "Value for 'background' cpuset"
 	default "0-1"
