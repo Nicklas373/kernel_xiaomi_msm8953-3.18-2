@@ -14,7 +14,7 @@ master : Current source branch that used for all branch on this kernel, it's bas
 
 pie : Current stable hmp branch, this branch is stock based kernel with always up-to-date from caf, aosp/common
       , exfat, f2fs and keep it up with no mods or customizations. Only include several optimization to make it stable,
-      because it's designed to keep stock and use as base kernel (Based on LA.UM.8.6.r1-02900-89xx.0).
+      because it's designed to keep stock and use as base kernel (Based on LA.UM.8.6.r1-04200-89xx.0).
 
 dev/kasumi : Current clarity kernel branch, with eas merged and other kernel features that already detail on xda thread
              (This is almost force push build, but not always push on xda or telegram due private build).
@@ -41,12 +41,13 @@ dev/kasumi : Current clarity kernel branch, with eas merged and other kernel fea
 | Release Date            | January 2017                      |
 
 ## Features
-Based on Clarity Kernel r17 build 20200128
-- Based on CAF Kernel Tag 'LA.UM.8.6.r1-03400-89xx.0'
+Based on Clarity Kernel r18 build 20200405
+- Based on CAF Kernel Tag 'LA.UM.8.6.r1-04200-89xx.0'
 - Up-to-date for aosp common kernel 3.18 (https://https://source.codeaurora.org/quic/la/kernel/msm-3.18)
 - Up-to-date for f2fs stable branch (https://github.com/jaegeuk/f2fs-stable)
 - Up-to-date for exfat stable branch (https://github.com/arter97/exfat-linux)
-- Compiled using Clang 10.0.0 Proton Clang (Compat VDSO)
+- Compiled using Clang 11.0.0 Proton Clang (Compat VDSO)
+- LTO & LLVM Optimization
 - Merge EAS Based on (https://github.com/EAS-Project/msm-3.18)
 - Merge PELT Halflife 16ms for EAS
 - Energy Model Management Framework for legacy support

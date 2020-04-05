@@ -1,15 +1,35 @@
-r17 - 01-28-2020 (GMT+7)
+r18 - 04-05-2020 (GMT+7)
 
-- Merge latest aosp/android-3.18 common branch as per 20200128
-- Revert several commit from aosp/android-3.18 to fix issue on A/V or failure compilation
-- Upstreamed AnyKernel3 (No need to reflash magisk on android 10 after flash kernel)
-- Switch to Proton clang version 10.0.0 (@kdrag0n)
-- Disable LLVM Polly optimizations
-- Merge more missing upstream changes (@krascgq)
-- Use proper fix for last workaround on wifi drivers (@krascgq)
-- Code cleanup for mido kernel specific changes (@krascgq)
-- Import Xiaomi Thermal changes and several msm thermal optimizations
-- Misc gpu optimizations (@kerneltoast)
-- Switch to 80Hz arbitrary tick rates (@tytydraco)
-- Several I/O optimizations (@tytydraco)
-- Other misc optimizations
+- Merge latest aosp/android-3.18 from common kernel changes up to 20200320
+- Merge latest kernel and wlan update from codeaurora with tag LA.UM.8.6.r1-04200-89xx.0
+- Merge latest stable update from https://github.com/KudProject/kernel_msm-3.18 with branch LA.UM.8.6.r1/aosp-updates to fix several issue with old upstream and missing commit
+- Switch to Proton clang version 11.0.0 build 20200330 (@kdrag0n)
+- Enable dead code elimination and LTO
+- Enable LLVM Polly optimizations
+- Move to full PELT half life 16ms implementation (Disable WALT)
+- Several improvement for PELT, Sched, NOHZ, CPUSets & schedutil cpu governor
+- Enable Ultra Low Power Save for all display panel
+- Properly set GPU Timeout to 64 ms
+- Switch to 100HZ Kernel tick rates
+- Apply several cpu qos optimizations from @kerneltoast
+- Use default qos for active/wakeup latency
+- Include several latest optimizations from wahoo kernel (@kerneltoast)
+- Reworked ion/iommu & binder (Thanks to @zeta96)
+- Import binder from android-4.19 wahoo kernel (Thanks to @zeta96)
+- Import cpumask & irq updates from https://github.com/ProtoDump/kernel_xiaomi_santoni (Thanks to @ProtoChuz)
+- Import SLMK from wahoo kernel (@kerneltoast)
+- Set several worker to run as performance critical (@kerneltoast)
+- Re-import boeffla wakelock blockers and several wakelock handling commit
+- Misc changes with wlan driver
+- Optimized charging driver
+- Add QNS charging driver
+- Fixed msm performance issue
+- Sync with general link updates
+- F2FS Rapid GC Updates
+- Disable other IPC Log error when IPC Logging is disable
+- Disable several kernel modules, debugging & tracing drivers
+- Drop DTS Eagle Audio Driver
+- Revert all mutex_lock commit
+- Misc optimizations
+- Update to latest revision from AnyKernel3 Source
+- Fixup anykernel detector for EAS Based ROM, now custom powerhint only be installed if ROM have .json based powerhint

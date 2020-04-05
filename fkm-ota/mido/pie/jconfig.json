@@ -1,11 +1,11 @@
 {
   "kernel": {
     "name": "Clarity Kernel | Mido",
-    "version": "r17",
-    "link": "https://sourceforge.net/projects/clarity-kernel/files/Mido/r17/Clarity-Kernel-Mido-r17-EAS-P-20200128-2203.zip/download",
+    "version": "r18",
+    "link": "https://sourceforge.net/projects/clarity-kernel/files/Mido/r18/Clarity-Kernel-Mido-r18-EAS-P-20200405-2011.zip/download",
     "changelog_url": "https://raw.githubusercontent.com/Nicklas373/kernel_xiaomi_msm8953-3.18-2/readme/fkm-ota/mido/changelog.txt",
-    "date": "2020-01-28",
-    "sha1": "4fadd0b5d1f358624cc654df276e0d072f844cca"
+    "date": "2020-04-05",
+    "sha1": "123139c1b6ce60d81a5394ce5ad1efac208dfdc1"
   },
   "support": {
     "link": "https://forum.xda-developers.com/redmi-note-4/xiaomi-redmi-note-4-snapdragon-roms-kernels-recoveries--other-development/kernel-clarity-kernel-t3992235"
