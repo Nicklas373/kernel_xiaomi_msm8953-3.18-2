@@ -100,3 +100,4 @@ all.config
 
 # Object directory
 out/
+regen
