@@ -90,9 +90,10 @@ void __weak arch_cpu_idle(void)
  */
 static void cpuidle_idle_call(void)
 {
-	struct cpuidle_device *dev = cpuidle_get_device();
+	struct cpuidle_device *dev = __this_cpu_read(cpuidle_devices);
 	struct cpuidle_driver *drv = cpuidle_get_cpu_driver(dev);
 	int next_state, entered_state;
+	unsigned int broadcast;
 	bool reflect;
 
 	/*
@@ -129,13 +130,11 @@ static void cpuidle_idle_call(void)
 	 * timekeeping to prevent timer interrupts from kicking us out of idle
 	 * until a proper wakeup interrupt happens.
 	 */
-	if (idle_should_freeze() || dev->use_deepest_state) {
-		if (idle_should_freeze()) {
-			entered_state = cpuidle_enter_freeze(drv, dev);
-			if (entered_state > 0) {
-				local_irq_enable();
-				goto exit_idle;
-			}
+	if (idle_should_freeze()) {
+		entered_state = cpuidle_enter_freeze(drv, dev);
+		if (entered_state >= 0) {
+			local_irq_enable();
+			goto exit_idle;
 		}
 
 		reflect = false;
@@ -163,6 +162,18 @@ static void cpuidle_idle_call(void)
 		goto exit_idle;
 	}
 
+	broadcast = drv->states[next_state].flags & CPUIDLE_FLAG_TIMER_STOP;
+
+	/*
+	 * Tell the time framework to switch to a broadcast timer
+	 * because our local timer will be shutdown. If a local timer
+	 * is used from another cpu as a broadcast timer, this call may
+	 * fail if it is not available
+	 */
+	if (broadcast &&
+	    clockevents_notify(CLOCK_EVT_NOTIFY_BROADCAST_ENTER, &dev->cpu))
+		goto use_default;
+
 	/* Take note of the planned idle state. */
 	idle_set_state(this_rq(), &drv->states[next_state]);
 
@@ -176,8 +187,8 @@ static void cpuidle_idle_call(void)
 	/* The cpu is no longer idle or about to enter idle. */
 	idle_set_state(this_rq(), NULL);
 
-	if (entered_state == -EBUSY)
-		goto use_default;
+	if (broadcast)
+		clockevents_notify(CLOCK_EVT_NOTIFY_BROADCAST_EXIT, &dev->cpu);
 
 	/*
 	 * Give the governor an opportunity to reflect on the outcome
