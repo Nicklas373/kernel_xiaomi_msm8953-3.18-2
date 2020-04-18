@@ -1,0 +1,6 @@
+#!/bin/bash
+
+make mido_defconfig
+cp out/.config arch/arm64/configs/mido_defconfig
+git add arch 
+git commit -m "ARM64/configs: mido: Regenerate defconfig" -s
