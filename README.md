@@ -18,6 +18,13 @@ pie : Current stable hmp branch, this branch is stock based kernel with always u
 
 dev/kasumi : Current clarity kernel branch, with eas merged and other kernel features that already detail on xda thread
              (This is almost force push build, but not always push on xda or telegram due private build).
+
+dev/kasumi-inline: Current clarity kernel branch, which can include to build as inline on ROM. This branch take latest update
+		from dev/kasumi branch which only revert some optimization to make possible compile as inline.
+
+dev/kasumi-pie : Current clarity kernel branch, which only revert 1 commit for simple lmk that aren't necessary for android 9
+		has it.
+
 ```
 
 ## About device
@@ -47,7 +54,7 @@ Based on Clarity Kernel r18 build 20200405
 - Up-to-date for f2fs stable branch (https://github.com/jaegeuk/f2fs-stable)
 - Up-to-date for exfat stable branch (https://github.com/arter97/exfat-linux)
 - Compiled using Clang 11.0.0 Proton Clang (Compat VDSO)
-- LTO & LLVM Optimization
+- LTO , Dead Code Elimination & LLVM Optimization
 - Merge EAS Based on (https://github.com/EAS-Project/msm-3.18)
 - Merge PELT Halflife 16ms for EAS
 - Energy Model Management Framework for legacy support
@@ -58,9 +65,13 @@ Based on Clarity Kernel r18 build 20200405
 - Audio Optimizations (UHQA, Slimbus OC, etc)
 - Updated LZO/LZ4 Compressor/Decompressor Module
 - Optimized CPU Boost for EAS (Dynamic Stune Boost v3)
-- Upstreamed ZRAM,ZSMALLOC & ZCACHE
+- Upstreamed ZRAM (ZSTD default compression),ZSMALLOC & ZCACHE
 - Improved Power Efficient Workqueue
 - Cortex a53 Optimizations
+- Simple LMK
+- Improve CPU QOS
+- Perf Critical IRQ
+- Set 64ms for GPU Latency
 - USB Fastcharge
 - Backlight Dimmer
 - Klapse
